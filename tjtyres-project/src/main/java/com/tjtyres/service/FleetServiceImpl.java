@@ -26,7 +26,6 @@ public class FleetServiceImpl implements FleetService{
 
 	@Override
 	public Fleet save(Fleet fleet) {
-		
 		Address address = fleet.getAddress();
 		if(address != null) {	
 			address.setFleet(fleet);
