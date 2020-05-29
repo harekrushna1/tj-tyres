@@ -19,16 +19,18 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	
 
 
 	@Override
 	public User save(UserRequest userRequest)throws UserAlreadyException{
+		
 		User user = new User();
 		user.setUsername(userRequest.getUsername());
 		user.setEmail(userRequest.getEmail());
 		user.setPassword(userRequest.getPassword());
 		User findUser = userRepository.findByEmail(user.getEmail());
-
 			if(findUser != null) {
 				 throw new UserAlreadyException("already exist username please give other username:");	
 				 
@@ -52,5 +54,16 @@ public class UserServiceImpl implements UserService {
 	public List<User> findByAll() {
 		return userRepository.findAll();
 	}
+
+	@Override
+	public User findByEmail(String email) {
+		
+		return userRepository.findByEmail(email);
+	}
+
+	/*
+	 * @Override public boolean checkUserExist(User user) { boolean userExistFlag =
+	 * userRepository.checkUserExist(user); return userExistFlag; }
+	 */
 
 }

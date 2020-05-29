@@ -10,4 +10,6 @@ public interface UserService {
 	public User save(UserRequest user)throws UserAlreadyException;
 	public User findByUsername(String username);
 	public List<User> findByAll();
+	public User findByEmail(String email);
+	//boolean checkUserExist(User user);
 }
